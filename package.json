@@ -1,0 +1,24 @@
+{
+  "name": "mkvtag",
+  "version": "1.0.0",
+  "description": "Generate MKV XMLs from API. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Steve-luo/mkvtag.git"
+  },
+  "author": "Steve-luo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Steve-luo/mkvtag/issues"
+  },
+  "homepage": "https://github.com/Steve-luo/mkvtag#readme",
+  "dependencies": {
+    "prompt": "^1.0.0",
+    "request": "^2.88.2",
+    "xmlbuilder": "^15.1.1"
+  }
+}

@@ -1,23 +1,39 @@
 module.exports = {
-  imdb: function (imdbID) {
-    console.log(imdbID)
+  imdbMovie: function (imdbID, apiKey, callback) {
+    const request = require("request")
 
-    let request = require("request")
+    const options = {
+      method: 'GET',
+      url: 'https://imdb8.p.rapidapi.com/title/get-overview-details',
+      qs: {tconst: imdbID},
+      headers: {
+        'x-rapidapi-host': 'imdb8.p.rapidapi.com',
+        'x-rapidapi-key': apiKey
+      }
+    }
 
-    let options = {
+    request(options, function (error, response, body) {
+      if (error) return callback(error)
+      else callback(null, body)
+    })
+  },
+
+  imdbTv: function (imdbID, apiKey, callback) {
+    const request = require("request")
+
+    const options = {
       method: 'GET',
       url: 'https://imdb8.p.rapidapi.com/title/get-seasons',
       qs: {tconst: imdbID},
       headers: {
         'x-rapidapi-host': 'imdb8.p.rapidapi.com',
-        'x-rapidapi-key': 'f51de4a793mshf4fbb2145270d6dp1914aejsnb80c8124ce77'
+        'x-rapidapi-key': apiKey
       }
     }
 
     request(options, function (error, response, body) {
-      if (error) throw new Error(error)
-
-      console.log(body)
+      if (error) return callback(error)
+      else callback(null, body)
     })
   }
 }

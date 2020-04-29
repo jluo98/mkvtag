@@ -1,8 +1,8 @@
 {
   "name": "mkvtag",
-  "version": "1.0.0",
-  "description": "Generate MKV XMLs from API. ",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "Generate MKV XMLs from IMDB API. ",
+  "main": "mkvtag.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/Steve-luo/mkvtag.git"
   },
   "author": "Steve-luo",
-  "license": "ISC",
+  "license": "GNU GPLv3",
   "bugs": {
     "url": "https://github.com/Steve-luo/mkvtag/issues"
   },

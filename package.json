@@ -1,6 +1,6 @@
 {
   "name": "mkvtag",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generate MKV XMLs from IMDB API. ",
   "main": "mkvtag.js",
   "scripts": {

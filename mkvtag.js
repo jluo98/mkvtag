@@ -166,12 +166,15 @@ function generateMovieXml(imdbId, movieDbId) {
   })
 
   function saveMovieXml(data) {
+    let movieTitle = data.title
+    let movieTitleNoSpecialChar = movieTitle.replace(/\s|\#|\%|\&|\{|\}|\\|\<|\>|\*|\?|\/|\$|\!|\'|\"|\:|\@|\+|\`|\||\=/g, '.')
+
     if (!fs.existsSync('./output')){
       fs.mkdirSync('./output');
     }
-    fs.writeFile(`./output/${data.title}.${data.year}.xml`, movieXml, (err) => {
+    fs.writeFile(`./output/${movieTitleNoSpecialChar}.${data.year}.xml`, movieXml, (err) => {
       if (err) throw err
-      console.log(`XML for movie [ ${data.title} (${data.year}) ] has been saved to the output folder. `)
+      console.log(`XML for movie [ ${movieTitle} (${data.year}) ] has been saved to the output folder. `)
     })
   }
 }
@@ -265,7 +268,7 @@ function generateTvXml(imdbId, movieDbId, tvDbId) {
 
           tvXml = tvXml.ele(objEpisodeNumber).ele(objEpisodeImdb).end({ pretty: true })
 
-          let tvTitleNoSpace = tvTitle.replace(/\s/g, '.')
+          let tvTitleNoSpecialChar = tvTitle.replace(/\s|\#|\%|\&|\{|\}|\\|\<|\>|\*|\?|\/|\$|\!|\'|\"|\:|\@|\+|\`|\||\=/g, '.')
           let seasonNumberPadded = pad(seasonNumber, 2)
           let episodeNumberPadded = pad(episodeNumber, 2)
 
@@ -273,11 +276,11 @@ function generateTvXml(imdbId, movieDbId, tvDbId) {
             fs.mkdirSync('./output');
           }
 
-          if (!fs.existsSync(`./output/${tvTitleNoSpace}.S${seasonNumberPadded}`)){
-            fs.mkdirSync(`./output/${tvTitleNoSpace}.S${seasonNumberPadded}`);
+          if (!fs.existsSync(`./output/${tvTitleNoSpecialChar}.S${seasonNumberPadded}`)){
+            fs.mkdirSync(`./output/${tvTitleNoSpecialChar}.S${seasonNumberPadded}`);
           }
 
-          fs.writeFile(`./output/${tvTitleNoSpace}.S${seasonNumberPadded}/${tvTitleNoSpace}.S${seasonNumberPadded}.E${episodeNumberPadded}.xml`, tvXml, (err) => {
+          fs.writeFile(`./output/${tvTitleNoSpecialChar}.S${seasonNumberPadded}/${tvTitleNoSpecialChar}.S${seasonNumberPadded}.E${episodeNumberPadded}.xml`, tvXml, (err) => {
             if (err) throw err
             console.log(`XML for TV [ ${tvTitle} S${seasonNumberPadded} E${episodeNumberPadded} ] has been saved to the output folder. `)
           })
